@@ -7,12 +7,12 @@
 const merge = (objects) => Object.assign(...objects);
 
 const pick = (columns) => (xs) =>
-  merge(columns.map((x) => ({[x.name]: xs[x.index]})));
+  merge(columns.map((column) => ({[column.name]: xs[column.index]})));
 
 const readFile = (fileName) => 'Bob,32\nAlice,25\n';
 
-const parserFactory = ({delimiter, columns}) => (str) =>
-  str
+const parserFactory = ({delimiter, columns}) => (csvString) =>
+  csvString
     .trim()
     .split('\n')
     .map((x) => x.split(delimiter))
